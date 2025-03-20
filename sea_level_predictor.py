@@ -4,15 +4,13 @@ from scipy.stats import linregress
 
 def draw_plot():
     # Read data from file
+    
     df = pd.read_csv('epa-sea-level.csv')
-
-    print(df)
 
     # Create scatter plot
 
     plt.subplots(1, 1, figsize=(10, 5))
     
-
     x = df["Year"]
     y = df["CSIRO Adjusted Sea Level"]
 
@@ -22,17 +20,8 @@ def draw_plot():
 
     slope1, yintercept1, r1, p1, se1 = linregress(x, y)
 
-    print('slope1', slope1)
-    print('yintercept1', yintercept1)
-    print('r1', r1)
-    print('p1', p1)
-    print('se1', se1)
-
     x1 = [x.min(), 2050]
     y1 = [x1[0] * slope1 + yintercept1, x1[1] * slope1 + yintercept1]
-
-    print('x1', x1)
-    print('y1', y1)
 
     plt.plot(x1, y1)
 
@@ -44,17 +33,8 @@ def draw_plot():
 
     slope2, yintercept2, r2, p2, se2 = linregress(x2000, y2000)
 
-    print('slope2', slope2)
-    print('yintercept2', yintercept2)
-    print('r2', r2)
-    print('p2', p2)
-    print('se2', se2)
-
     x2 = [x2000.min(), 2050]
     y2 = [x2[0] * slope2 + yintercept2, x2[1] * slope2 + yintercept2]
-
-    print('x2', x2)
-    print('y2', y2)
 
     plt.plot(x2, y2)
 
