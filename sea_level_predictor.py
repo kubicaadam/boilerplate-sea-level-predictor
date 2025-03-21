@@ -20,8 +20,8 @@ def draw_plot():
 
     slope1, yintercept1, r1, p1, se1 = linregress(x, y)
 
-    x1 = [x.min(), 2050]
-    y1 = [x1[0] * slope1 + yintercept1, x1[1] * slope1 + yintercept1]
+    x1 = pd.concat([df["Year"], pd.Series(range(df["Year"].max() + 1, 2051))])
+    y1 = x1 * slope1 + yintercept1
 
     plt.plot(x1, y1)
 
@@ -33,8 +33,8 @@ def draw_plot():
 
     slope2, yintercept2, r2, p2, se2 = linregress(x2000, y2000)
 
-    x2 = [x2000.min(), 2050]
-    y2 = [x2[0] * slope2 + yintercept2, x2[1] * slope2 + yintercept2]
+    x2 = pd.concat([df2000["Year"], pd.Series(range(df["Year"].max() + 1, 2051))])
+    y2 = x2 * slope2 + yintercept2
 
     plt.plot(x2, y2)
 
